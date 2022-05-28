@@ -1,7 +1,7 @@
 <script>
   export let size = 32
   export let strokeWidth = 3
-  export let color = '#000'
+  export let color = 'var(--black)'
 </script>
 
 <div
