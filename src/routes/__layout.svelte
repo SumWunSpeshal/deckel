@@ -7,13 +7,18 @@
   let nav
   let firstSlide
   let reserveBottom = 0
-  let navInteraction = false
+  let navInteraction = true
 
   onMount(() => {
     reserveBottom = nav.getBoundingClientRect().height
+    determineNavInteraction()
   })
 
   function onScroll() {
+    determineNavInteraction()
+  }
+
+  function determineNavInteraction() {
     navInteraction = firstSlide.getBoundingClientRect().y !== 0
   }
 </script>
@@ -64,7 +69,7 @@
 >
   <div class="flex flex-col justify-end h-full snap-end" bind:this={firstSlide}>
     <nav
-      class="flex justify-center p-4 border border-red-600 bg-white pointer-events-auto"
+      class="flex justify-center p-4 border-y border-gray-300 bg-white pointer-events-auto"
       bind:this={nav}
     >
       <ul class="flex">
