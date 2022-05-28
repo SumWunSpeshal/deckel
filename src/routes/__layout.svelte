@@ -102,42 +102,6 @@
     ut ex! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio, est
     explicabo perspiciatis minima velit fugit consequuntur voluptate odit!
     Nesciunt deleniti earum totam accusantium alias fuga provident corporis quis
-    ut ex! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio, est
-    explicabo perspiciatis minima velit fugit consequuntur voluptate odit!
-    Nesciunt deleniti earum totam accusantium alias fuga provident corporis quis
-    ut ex! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio, est
-    explicabo perspiciatis minima velit fugit consequuntur voluptate odit!
-    Nesciunt deleniti earum totam accusantium alias fuga provident corporis quis
-    ut ex! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio, est
-    explicabo perspiciatis minima velit fugit consequuntur voluptate odit!
-    Nesciunt deleniti earum totam accusantium alias fuga provident corporis quis
-    ut ex! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio, est
-    explicabo perspiciatis minima velit fugit consequuntur voluptate odit!
-    Nesciunt deleniti earum totam accusantium alias fuga provident corporis quis
-    ut ex! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio, est
-    explicabo perspiciatis minima velit fugit consequuntur voluptate odit!
-    Nesciunt deleniti earum totam accusantium alias fuga provident corporis quis
-    ut ex! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio, est
-    explicabo perspiciatis minima velit fugit consequuntur voluptate odit!
-    Nesciunt deleniti earum totam accusantium alias fuga provident corporis quis
-    ut ex! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio, est
-    explicabo perspiciatis minima velit fugit consequuntur voluptate odit!
-    Nesciunt deleniti earum totam accusantium alias fuga provident corporis quis
-    ut ex! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio, est
-    explicabo perspiciatis minima velit fugit consequuntur voluptate odit!
-    Nesciunt deleniti earum totam accusantium alias fuga provident corporis quis
-    ut ex! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio, est
-    explicabo perspiciatis minima velit fugit consequuntur voluptate odit!
-    Nesciunt deleniti earum totam accusantium alias fuga provident corporis quis
-    ut ex! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio, est
-    explicabo perspiciatis minima velit fugit consequuntur voluptate odit!
-    Nesciunt deleniti earum totam accusantium alias fuga provident corporis quis
-    ut ex! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio, est
-    explicabo perspiciatis minima velit fugit consequuntur voluptate odit!
-    Nesciunt deleniti earum totam accusantium alias fuga provident corporis quis
-    ut ex! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio, est
-    explicabo perspiciatis minima velit fugit consequuntur voluptate odit!
-    Nesciunt deleniti earum totam accusantium alias fuga prov
   </div>
 </footer>
 
