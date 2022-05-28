@@ -11,7 +11,7 @@
   <div class="inner rounded-full square-full" />
   <div class="inner rounded-full square-full -rotate-45" />
   <div
-    class="arrow absolute left-0 border-transparent top-1/2 -translate-x-1/3 -translate-y-full -rotate-45 rounded-sm"
+    class="arrow absolute left-0 border-transparent top-1/2 -translate-x-1/4 -translate-y-full -rotate-45 rounded-sm"
   />
   <div
     class="center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full"
