@@ -1,45 +1,71 @@
 <script>
   import { page } from '$app/stores'
-  import { onMount, afterUpdate } from 'svelte'
+  import { onMount } from 'svelte'
 
-  import '../app.css'
+  import '/src/app.css'
 
   let nav
+  let firstSlide
   let reserveBottom = 0
-  let locked = true
-  let touchY = null
+  let navInteraction = false
 
   onMount(() => {
     reserveBottom = nav.getBoundingClientRect().height
   })
 
-  function onTouchStart({ touches: [touch] }) {
-    touchY = touch.clientY
-  }
-
-  function onTouchMove({ touches: [touch] }) {
-    locked = touch.clientY > touchY
-  }
-
-  function onTouchEnd() {
-    touchY = null
+  function onScroll() {
+    navInteraction = firstSlide.getBoundingClientRect().y !== 0
   }
 </script>
 
-<main style="padding-bottom: {reserveBottom}px;">
+<main
+  class="relative z-1 overflow-y-auto"
+  style="max-height: calc(100% - {reserveBottom}px);"
+>
   <slot />
+  <div>
+    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio, est
+    explicabo perspiciatis minima velit fugit consequuntur voluptate odit!
+    Nesciunt deleniti earum totam accusantium alias fuga provident corporis quis
+    ut ex! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio, est
+    explicabo perspiciatis minima velit fugit consequuntur voluptate odit!
+    Nesciunt deleniti earum totam accusantium alias fuga provident corporis quis
+    ut ex! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio, est
+    explicabo perspiciatis minima velit fugit consequuntur voluptate odit!
+    Nesciunt deleniti earum totam accusantium alias fuga provident corporis quis
+    ut ex! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio, est
+    explicabo perspiciatis minima velit fugit consequuntur voluptate odit!
+    Nesciunt deleniti earum totam accusantium alias fuga provident corporis quis
+    ut ex! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio, est
+    explicabo perspiciatis minima velit fugit consequuntur voluptate odit!
+    Nesciunt deleniti earum totam accusantium alias fuga provident corporis quis
+    ut ex! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio, est
+    explicabo perspiciatis minima velit fugit consequuntur voluptate odit!
+    Nesciunt deleniti earum totam accusantium alias fuga provident corporis quis
+    ut ex! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio, est
+    explicabo perspiciatis minima velit fugit consequuntur voluptate odit!
+    Nesciunt deleniti earum totam accusantium alias fuga provident corporis quis
+    ut ex! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio, est
+    explicabo perspiciatis minima velit fugit consequuntur voluptate odit!
+    Nesciunt deleniti earum totam accusantium alias fuga provident corporis quis
+    ut ex! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio, est
+    explicabo perspiciatis minima velit fugit consequuntur voluptate odit!
+    Nesciunt deleniti earum totam accusantium alias fuga provident corporis quis
+    ut ex! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio, est
+    explicabo perspiciatis minima velit fugit consequuntur voluptate odit!
+    Nesciunt deleniti earum totam accusantium alias fuga provident corporis quis
+    ut ex!
+  </div>
 </main>
 <footer
-  class="fixed overflow-y-auto text-center inset-0 snap-y snap-mandatory z-10"
-  style="pointer-events: {locked ? 'none' : 'all'}"
+  class="fixed overflow-y-auto text-center inset-0 snap-y snap-mandatory"
+  class:z-2={navInteraction}
+  on:scroll={onScroll}
 >
-  <div class="flex flex-col justify-end h-full snap-end">
+  <div class="flex flex-col justify-end h-full snap-end" bind:this={firstSlide}>
     <nav
       class="flex justify-center p-4 border border-red-600 bg-white pointer-events-auto"
       bind:this={nav}
-      on:touchstart={onTouchStart}
-      on:touchmove={onTouchMove}
-      on:touchend={onTouchEnd}
     >
       <ul class="flex">
         <li class:active={$page.url.pathname === '/'}>
@@ -86,12 +112,18 @@
     ut ex! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio, est
     explicabo perspiciatis minima velit fugit consequuntur voluptate odit!
     Nesciunt deleniti earum totam accusantium alias fuga provident corporis quis
-    ut ex!
-
-    <!-- Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio, est explicabo perspiciatis minima velit fugit consequuntur voluptate odit! Nesciunt deleniti earum totam accusantium alias fuga provident corporis quis ut ex!	
-		Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio, est explicabo perspiciatis minima velit fugit consequuntur voluptate odit! Nesciunt deleniti earum totam accusantium alias fuga provident corporis quis ut ex!	
-		Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio, est explicabo perspiciatis minima velit fugit consequuntur voluptate odit! Nesciunt deleniti earum totam accusantium alias fuga provident corporis quis ut ex!	
-		Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio, est explicabo perspiciatis minima velit fugit consequuntur voluptate odit! Nesciunt deleniti earum totam accusantium alias fuga prov -->
+    ut ex! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio, est
+    explicabo perspiciatis minima velit fugit consequuntur voluptate odit!
+    Nesciunt deleniti earum totam accusantium alias fuga provident corporis quis
+    ut ex! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio, est
+    explicabo perspiciatis minima velit fugit consequuntur voluptate odit!
+    Nesciunt deleniti earum totam accusantium alias fuga provident corporis quis
+    ut ex! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio, est
+    explicabo perspiciatis minima velit fugit consequuntur voluptate odit!
+    Nesciunt deleniti earum totam accusantium alias fuga provident corporis quis
+    ut ex! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio, est
+    explicabo perspiciatis minima velit fugit consequuntur voluptate odit!
+    Nesciunt deleniti earum totam accusantium alias fuga prov
   </div>
 </footer>
 
@@ -100,7 +132,6 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    padding: 1rem;
     width: 100%;
     max-width: 1024px;
     margin: 0 auto;

@@ -20,7 +20,14 @@ module.exports = {
         full: '100%',
         'screen-w': '100vw',
         'screen-h': '100vh'
-      })
+      }),
+      zIndex: {
+        1: '1',
+        2: '2',
+        3: '3',
+        5: '5',
+        100: '100'
+      }
     }
   },
   plugins: []
