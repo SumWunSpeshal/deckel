@@ -82,12 +82,12 @@
           </a>
         </li>
         <li class:active={$page.url.pathname === '/about'}>
-          <a sveltekit:prefetch href="/about">
+          <a sveltekit:prefetch href="/">
             <List />
           </a>
         </li>
         <li class:active={$page.url.pathname === '/todos'}>
-          <a sveltekit:prefetch href="/todos">
+          <a sveltekit:prefetch href="/">
             <History />
           </a>
         </li>
