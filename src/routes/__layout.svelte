@@ -1,6 +1,9 @@
 <script>
   import { page } from '$app/stores'
   import { onMount } from 'svelte'
+  import Plus from '$lib/icons/Plus.svelte'
+  import List from '$lib/icons/List.svelte'
+  import History from '$lib/icons/History.svelte'
 
   import '/src/app.css'
 
@@ -72,15 +75,21 @@
       class="flex justify-center p-4 border-y border-gray-300 bg-white pointer-events-auto"
       bind:this={nav}
     >
-      <ul class="flex">
+      <ul class="flex space-x-2">
         <li class:active={$page.url.pathname === '/'}>
-          <a sveltekit:prefetch href="/">Home</a>
+          <a sveltekit:prefetch href="/">
+            <Plus />
+          </a>
         </li>
         <li class:active={$page.url.pathname === '/about'}>
-          <a sveltekit:prefetch href="/about">About</a>
+          <a sveltekit:prefetch href="/about">
+            <List />
+          </a>
         </li>
         <li class:active={$page.url.pathname === '/todos'}>
-          <a sveltekit:prefetch href="/todos">Todos</a>
+          <a sveltekit:prefetch href="/todos">
+            <History />
+          </a>
         </li>
       </ul>
     </nav>

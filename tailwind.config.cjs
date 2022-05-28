@@ -1,3 +1,5 @@
+const plugin = require('tailwindcss/plugin')
+
 module.exports = {
   content: ['./src/**/*.{html,js,svelte,ts}'],
   theme: {
@@ -30,5 +32,40 @@ module.exports = {
       }
     }
   },
-  plugins: []
+  plugins: [
+    plugin(({ addComponents, theme, e }) => {
+      const classCollection = Object.entries(theme('width')).map(
+        ([name, value]) => ({
+          [`.square-${e(name)}`]: {
+            width: value,
+            height: value
+          }
+        })
+      )
+
+      addComponents(classCollection)
+    }),
+    plugin(({ addBase, theme }) => {
+      const customProperties = {}
+
+      for (const color in theme('colors')) {
+        if (Object.hasOwnProperty.call(theme('colors'), color)) {
+          const element = theme('colors')[color]
+          if (typeof element === 'object' && element !== null) {
+            for (const variant in element) {
+              if (Object.hasOwnProperty.call(element, variant)) {
+                customProperties[`--${color}-${variant}`] = element[variant]
+              }
+            }
+          } else {
+            customProperties[`--${color}`] = element
+          }
+        }
+      }
+
+      addBase({
+        ':root, :before, :after': customProperties
+      })
+    })
+  ]
 }
