@@ -6,6 +6,7 @@
   import History from '$lib/icons/History.svelte'
   import Delete from '$lib/icons/Delete.svelte'
   import Edit from '$lib/icons/Edit.svelte'
+  import Input from '$lib/Input.svelte'
 
   import '/src/app.css'
 
@@ -108,11 +109,6 @@
   </div>
 
   <div class="snap-start bg-white">
-    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio, est
-    explicabo perspiciatis minima velit fugit consequuntur voluptate odit!
-    Nesciunt deleniti earum totam accusantium alias fuga provident corporis quis
-    ut ex! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio, est
-    explicabo perspiciatis minima velit fugit consequuntur voluptate odit!
-    Nesciunt deleniti earum totam accusantium alias fuga provident corporis quis
+    <Input id="new-list" />
   </div>
 </footer>
