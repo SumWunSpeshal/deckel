@@ -49,7 +49,11 @@
   class:z-2={navInteraction}
   on:scroll={() => determineNavInteraction()}
 >
-  <div class="flex flex-col justify-end h-full snap-end" bind:this={firstSlide}>
+  <div class="flex flex-col h-full snap-end" bind:this={firstSlide}>
+    <div
+      class="grow"
+      on:click={() => firstSlide.scrollIntoView({ behavior: 'smooth' })}
+    />
     <nav
       class="flex justify-center bg-white pointer-events-auto"
       bind:this={nav}
