@@ -22,10 +22,13 @@
     </div>
     <button
       type="button"
-      on:click={() => lists.createList(value)}
+      on:click={() => {
+        lists.createList(value)
+        value = null
+      }}
       class="square-12 flex justify-center items-center rounded-md transition-colors {value
-        ? 'bg-green-300 cursor-pointer'
-        : 'bg-green-100 cursor-not-allowed'}"
+        ? 'bg-green-400 cursor-pointer'
+        : 'bg-stone-200 cursor-not-allowed'}"
     >
       <Plus size="24" color="var(--white)" />
     </button>
@@ -36,8 +39,8 @@
       {#if listId === editingList}
         <div
           class="flex justify-between items-center pl-4 rounded-md text-stone-700 transition-colors cursor-pointer {list.selected
-            ? 'bg-stone-200'
-            : 'bg-stone-100'}"
+            ? 'bg-teal-100'
+            : 'bg-stone-200'}"
         >
           <Input
             id="edit-list-{listId}"
@@ -68,8 +71,8 @@
       {:else}
         <div
           class="flex justify-between items-center pl-4 rounded-md text-stone-700 transition-colors cursor-pointer {list.selected
-            ? 'bg-stone-200'
-            : 'bg-stone-100'}"
+            ? 'bg-teal-100'
+            : 'bg-stone-200'}"
           on:click={() => lists.selectList(listId)}
         >
           <span>{list.participant}</span>

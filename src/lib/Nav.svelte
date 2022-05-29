@@ -4,23 +4,23 @@
   import List from './icons/List.svelte'
 </script>
 
-<ul class="flex grow">
-  <li
-    class="grow transition-colors duration-300 {$page.url.pathname === '/'
-      ? 'bg-stone-200'
-      : 'bg-stone-100'}"
-  >
+<ul class="flex grow bg-stone-100">
+  <li class="grow">
     <a href="/" class="py-4 flex justify-center">
-      <Plus color="var(--stone-700)" />
+      <Plus
+        color={$page.url.pathname === '/'
+          ? 'var(--teal-400)'
+          : 'var(--stone-400)'}
+      />
     </a>
   </li>
-  <li
-    class="grow transition-colors duration-300 {$page.url.pathname === '/list'
-      ? 'bg-stone-200'
-      : 'bg-stone-100'}"
-  >
+  <li class="grow">
     <a href="/list" class="py-4 flex justify-center">
-      <List color="var(--stone-700)" />
+      <List
+        color={$page.url.pathname === '/list'
+          ? 'var(--teal-400)'
+          : 'var(--stone-400)'}
+      />
     </a>
   </li>
 </ul>

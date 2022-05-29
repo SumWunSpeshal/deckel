@@ -10,15 +10,23 @@
   style="--size: {size}px; --color: {color}; --strokeWidth: {strokeWidth}px; --sqrt: {sqrt};"
   class="parent overflow-hidden relative"
 >
-  <div class="stroke stroke-top rounded-sm absolute" />
-  <div class="stroke stroke-bottom rounded-sm absolute" />
-  <div class="tip absolute bottom-0 left-0 rounded-sm">
-    <div class="zigzag zigzag-one rounded-sm" />
-    <div class="zigzag zigzag-two rounded-sm" />
-    <div class="zigzag zigzag-three rounded-sm" />
+  <div
+    class="stroke stroke-top rounded-sm absolute transition-colors duration-300"
+  />
+  <div
+    class="stroke stroke-bottom rounded-sm absolute transition-colors duration-300"
+  />
+  <div
+    class="tip absolute bottom-0 left-0 rounded-sm transition-colors duration-300"
+  >
+    <div class="zigzag zigzag-one rounded-sm transition-colors duration-300" />
+    <div class="zigzag zigzag-two rounded-sm transition-colors duration-300" />
+    <div
+      class="zigzag zigzag-three rounded-sm transition-colors duration-300"
+    />
     <!-- <div class="tippy-tip absolute" /> -->
   </div>
-  <div class="eraser absolute rounded-sm" />
+  <div class="eraser absolute rounded-sm transition-colors duration-300" />
 </div>
 
 <style>

@@ -10,8 +10,8 @@
 >
   {#each Array(3) as _}
     <div class="item | flex gap-0.5">
-      <div class="bullet" />
-      <div class="bar grow" />
+      <div class="bullet transition-colors duration-300" />
+      <div class="bar grow transition-colors duration-300" />
     </div>
   {/each}
 </div>

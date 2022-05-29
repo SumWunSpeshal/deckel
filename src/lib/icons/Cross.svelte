@@ -8,8 +8,8 @@
   style="--size: {size}px; --color: {color}; --strokeWidth: {strokeWidth}px"
   class="parent rotate-45"
 >
-  <div class="bar horizontal" />
-  <div class="bar vertical" />
+  <div class="bar horizontal transition-colors duration-300" />
+  <div class="bar vertical transition-colors duration-300" />
 </div>
 
 <style>

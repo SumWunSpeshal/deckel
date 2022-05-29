@@ -51,14 +51,14 @@
 >
   <div class="flex flex-col justify-end h-full snap-end" bind:this={firstSlide}>
     <nav
-      class="flex justify-center border-t-2 border-stone-700 bg-white pointer-events-auto"
+      class="flex justify-center bg-white pointer-events-auto"
       bind:this={nav}
     >
       <Nav />
     </nav>
   </div>
 
-  <div class="snap-start bg-white text-left" bind:this={secondSlide}>
+  <div class="snap-start bg-stone-100 text-left" bind:this={secondSlide}>
     <Drawer />
   </div>
 </footer>

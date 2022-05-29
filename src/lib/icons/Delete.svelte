@@ -8,11 +8,13 @@
   style="--size: {size}px; --color: {color}; --strokeWidth: {strokeWidth}px"
   class="parent flex flex-col items-center"
 >
-  <div class="handle rounded-t-md" />
-  <div class="bin relative grid place-items-center grow rounded-b-md">
+  <div class="handle rounded-t-md transition-colors duration-300" />
+  <div
+    class="bin relative grid place-items-center grow rounded-b-md transition-colors duration-300"
+  >
     <div class="crease-wrap flex h-1/2">
-      <div class="crease rounded-md" />
-      <div class="crease rounded-md" />
+      <div class="crease rounded-md transition-colors duration-300" />
+      <div class="crease rounded-md transition-colors duration-300" />
     </div>
   </div>
 </div>
@@ -43,6 +45,7 @@
     background-color: var(--color);
     position: absolute;
     bottom: 100%;
+    transition: background-color 0.3s ease-in-out;
   }
 
   .bin:before {

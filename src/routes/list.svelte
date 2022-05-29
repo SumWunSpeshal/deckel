@@ -13,7 +13,7 @@
 </svelte:head>
 
 <div class="container py-4">
-  <div class="mb-16">
+  <div class="mb-10">
     <h1 class="text-4xl font-bold text-stone-700">
       Ausgaben mit {$participant}
     </h1>
@@ -33,7 +33,7 @@
     {/if}
   </div>
 
-  <div class="my-10 border-t border-stone-300" />
+  <div class="my-6 border-t border-stone-300" />
 
   <div class="space-y-2">
     {#each $selectedListExpensesSortedByNew || [] as expense}

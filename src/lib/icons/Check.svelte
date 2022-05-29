@@ -8,8 +8,8 @@
   style="--size: {size}px; --color: {color}; --strokeWidth: {strokeWidth}px"
   class="parent"
 >
-  <div class="bar short" />
-  <div class="bar long" />
+  <div class="bar short transition-colors duration-300" />
+  <div class="bar long transition-colors duration-300" />
 </div>
 
 <style>

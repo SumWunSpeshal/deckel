@@ -8,9 +8,9 @@
   style="--size: {size}px; --color: {color}; --strokeWidth: {strokeWidth}px"
   class="parent flex items-center"
 >
-  <div class="bar stem">
-    <div class="bar tip tip-one" />
-    <div class="bar tip tip-two" />
+  <div class="bar stem transition-colors duration-300">
+    <div class="bar tip tip-one transition-colors duration-300" />
+    <div class="bar tip tip-two transition-colors duration-300" />
   </div>
 </div>
 

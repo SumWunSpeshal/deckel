@@ -10,6 +10,7 @@
 
   let purpose
   let customPurpose
+  const shortcuts = ['🛒', '🖨', '🛠', '⛽️', '🚗', '👕', '🏖', '🍿', '🍽️']
 
   let lending = true
 
@@ -66,63 +67,55 @@
     </div>
   </div>
   <h3 class="text-stone-700 text-lg mb-4 font-semibold">
-    Wer schuldet wem {currency(amount)}?
+    Wer hat die {currency(amount)} ausgelegt?
   </h3>
-  <div class="mb-16 flex items-center">
-    <span class="grow text-center basis-0 text-xl font-bold text-stone-700"
-      >Ich</span
+  <div class="mb-10 flex items-center gap-4">
+    <button
+      type="button"
+      class="grow text-center basis-0 text-xl font-bold text-white rounded-full py-2 transition-colors duration-300 {lending
+        ? 'bg-teal-200'
+        : 'bg-stone-200'}"
+      on:click={() => (lending = true)}
     >
-    <div class="basis-0 grow flex justify-center">
-      <button
-        type="button"
-        class="square-14 flex justify-center items-center bg-sky-200 rounded-full border-[3px] border-sky-500 transition-transform duration-300"
-        class:-rotate-180={lending}
-        on:click={() => (lending = !lending)}
-      >
-        <Arrow color="var(--white)" size="24" />
-      </button>
-    </div>
-
-    <span class="grow text-center basis-0 text-xl font-bold text-stone-700"
-      >{$participant}</span
+      Ich
+    </button>
+    <button
+      type="button"
+      class="grow text-center basis-0 text-xl font-bold text-white rounded-full py-2 transition-colors duration-300 {!lending
+        ? 'bg-teal-200'
+        : 'bg-stone-200'}"
+      on:click={() => (lending = false)}
     >
+      {$participant}
+    </button>
   </div>
   <h3 class="text-stone-700 text-lg mb-4 font-semibold">Verwendungszweck</h3>
-  <fieldset class="flex gap-x-8 gap-y-4 flex-wrap mb-16">
-    {#each ['🛒', '🖨', '🛠', '⛽️', '🚗', '👕', '🏖', '🍿', '🍽️'] as shortcut}
-      <label for={shortcut} class="flex gap-2 items-center cursor-pointer">
-        <input
-          type="radio"
-          id={shortcut}
-          name="Verwendungszweck"
-          value={shortcut}
-          bind:group={purpose}
-          class="cursor-pointer"
-        />
-        <span>
+  <fieldset class="flex gap-x-1 gap-y-4 flex-wrap mb-10">
+    {#each shortcuts as shortcut}
+      <button
+        type="button"
+        class="square-8 border-2 border-transparent flex items-center justify-center rounded-md"
+        class:border-teal-200={purpose === shortcut}
+        on:click={() => (purpose = shortcut)}
+      >
+        <span class="-ml-1">
           {shortcut}
         </span>
-      </label>
+      </button>
     {/each}
 
-    <label for="custom-purpose" class="w-full flex items-center gap-4 mt-4">
-      <input
-        type="radio"
-        id="custom-purpose"
-        name="Verwendungszweck"
-        value="custom"
-        bind:group={purpose}
-        class="cursor-pointer"
+    <div class="w-full">
+      <Input
+        id="custom-purpose-input"
+        label="Sonstiges"
+        bind:value={purpose}
+        onFocus={() => {
+          if (shortcuts.includes(purpose)) {
+            purpose = null
+          }
+        }}
       />
-
-      <div class="grow">
-        <Input
-          id="custom-purpose-input"
-          label="Sonstiges"
-          bind:value={customPurpose}
-        />
-      </div>
-    </label>
+    </div>
   </fieldset>
 
   <div class="flex justify-between">
@@ -136,8 +129,9 @@
     </button>
     <button
       type="button"
-      class="rounded-full border-[3px] border-stone-500 text-stone-500 px-4 py-2 font-bold transition-opacity duration-300 {!formComplete &&
-        'opacity-30 cursor-not-allowed pointer-events-none'}"
+      class="rounded-full border-[3px] px-4 py-2 font-bold transition-opacity duration-300 {!formComplete
+        ? 'border-stone-200 text-stone-200 cursor-not-allowed pointer-events-none'
+        : 'border-teal-300 text-teal-300'}"
       on:click={submit}
     >
       Bestätigen
