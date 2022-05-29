@@ -88,10 +88,7 @@ export const lists = createListsStore()
 export const selectedList = derived(lists, $lists =>
   Object.values($lists).find(({ selected }) => selected)
 )
-export const participant = derived(
-  selectedList,
-  ({ participant }) => participant
-)
+export const participant = derived(selectedList, list => list?.participant)
 
 if (browser) {
   lists.subscribe(value => localStorage.setItem('lists', JSON.stringify(value)))
