@@ -6,7 +6,7 @@
 
 <ul class="flex grow bg-stone-100">
   <li class="grow">
-    <a href="/" class="py-4 flex justify-center">
+    <a href="/" class="py-3 flex justify-center">
       <Plus
         color={$page.url.pathname === '/'
           ? 'var(--teal-400)'
@@ -15,7 +15,7 @@
     </a>
   </li>
   <li class="grow">
-    <a href="/list" class="py-4 flex justify-center">
+    <a href="/list" class="py-3 flex justify-center">
       <List
         color={$page.url.pathname === '/list'
           ? 'var(--teal-400)'

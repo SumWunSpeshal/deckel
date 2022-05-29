@@ -1,6 +1,8 @@
 <script>
   import {
+    lists,
     participant,
+    selectedListId,
     selectedListExpensesSortedByNew,
     sum
   } from '$lib/stores/lists'
@@ -9,7 +11,7 @@
 </script>
 
 <svelte:head>
-  <title>List expenses</title>
+  <title>Verlauf</title>
 </svelte:head>
 
 <div class="container py-4">
@@ -33,24 +35,36 @@
     {/if}
   </div>
 
-  <div class="my-6 border-t border-stone-300" />
+  {#if $selectedListExpensesSortedByNew.length}
+    <div class="my-6 border-t border-stone-300" />
 
-  <div class="space-y-2">
-    {#each $selectedListExpensesSortedByNew || [] as expense}
-      <div
-        class="p-3 bg-stone-200 rounded-md flex justify-between items-center text-stone-700 gap-4 {expense.purpose ===
-        'Ausgleich'
-          ? 'bg-sky-100'
-          : 'bg-stone-200'}"
+    <div class="space-y-2">
+      {#each $selectedListExpensesSortedByNew || [] as expense}
+        <div
+          class="p-3 bg-stone-200 rounded-md flex justify-between items-center text-stone-700 gap-4 {expense.purpose ===
+          'Ausgleich'
+            ? 'bg-sky-100'
+            : 'bg-stone-200'}"
+        >
+          <ul class="space-y-2">
+            <li class="text-stone-500">{formatDate(expense.date)}</li>
+            <li>
+              {expense.purpose}
+            </li>
+          </ul>
+          <span class="text-4xl">{currency(expense.amount)}</span>
+        </div>
+      {/each}
+    </div>
+
+    <div class="flex justify-end mt-6">
+      <button
+        type="button"
+        class="rounded-full border-[3px] px-4 py-2 font-bold transition-colors duration-300 border-orange-700 text-orange-700"
+        on:click={() => lists.clearExpenses($selectedListId)}
       >
-        <ul class="space-y-2">
-          <li class="text-stone-500">{formatDate(expense.date)}</li>
-          <li>
-            {expense.purpose}
-          </li>
-        </ul>
-        <span class="text-4xl">{currency(expense.amount)}</span>
-      </div>
-    {/each}
-  </div>
+        Verlauf löschen
+      </button>
+    </div>
+  {/if}
 </div>

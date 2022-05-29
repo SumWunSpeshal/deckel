@@ -1,6 +1,5 @@
 <script>
   import Input from '$lib/Input.svelte'
-  import Arrow from '$lib/icons/Arrow.svelte'
   import { participant, lists, selectedListId, sum } from '$lib/stores/lists'
   import currency from '/src/utils/currency'
 
@@ -98,7 +97,7 @@
         class:border-teal-200={purpose === shortcut}
         on:click={() => (purpose = shortcut)}
       >
-        <span class="-ml-1">
+        <span>
           {shortcut}
         </span>
       </button>
