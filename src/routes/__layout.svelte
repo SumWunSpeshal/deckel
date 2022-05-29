@@ -9,6 +9,7 @@
   import Input from '$lib/Input.svelte'
 
   import '/src/app.css'
+  import Check from '$lib/icons/Check.svelte'
 
   let nav
   let firstSlide
@@ -102,6 +103,11 @@
         <li class:active={$page.url.pathname === '/todos'}>
           <a sveltekit:prefetch href="/">
             <Edit />
+          </a>
+        </li>
+        <li class:active={$page.url.pathname === '/todos'}>
+          <a sveltekit:prefetch href="/">
+            <Check />
           </a>
         </li>
       </ul>
