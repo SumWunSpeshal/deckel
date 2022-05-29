@@ -53,8 +53,7 @@ function createListsStore() {
       update(prev => ({
         ...prev,
         [listId]: {
-          listId: prev[listId].listId,
-          participant: prev[listId].participant,
+          ...prev[listId],
           expenses: [
             ...prev[listId].expenses,
             { date: Date.now(), amount, lending, purpose }
@@ -65,8 +64,7 @@ function createListsStore() {
       update(prev => ({
         ...prev,
         [listId]: {
-          listId: prev[listId].listId,
-          participant: prev[listId].participant,
+          ...prev[listId],
           expenses: prev[listId].expenses.filter(
             item => item.date !== expenseDate
           )
@@ -76,8 +74,7 @@ function createListsStore() {
       update(prev => ({
         ...prev,
         [listId]: {
-          listId: prev[listId].listId,
-          participant: prev[listId].participant,
+          ...prev[listId],
           expenses: []
         }
       }))
@@ -88,6 +85,7 @@ export const lists = createListsStore()
 export const selectedList = derived(lists, $lists =>
   Object.values($lists).find(({ selected }) => selected)
 )
+export const selectedListId = derived(selectedList, list => list?.listId)
 export const participant = derived(selectedList, list => list?.participant)
 
 if (browser) {

@@ -1,18 +1,36 @@
 <script>
   import Input from '$lib/Input.svelte'
   import Arrow from '$lib/icons/Arrow.svelte'
-  import { participant } from '$lib/stores/lists'
+  import { participant, lists, selectedListId } from '$lib/stores/lists'
 
-  let value
-  $: formattedValue = (value ? value / 100 : 0).toLocaleString('de-DE', {
+  let amount
+  $: formattedAmount = (amount ? amount / 100 : 0).toLocaleString('de-DE', {
     style: 'currency',
     currency: 'EUR'
   })
+  $: purposeComplete = purpose || customPurpose
+  $: formComplete = amount && purposeComplete
 
   let purpose
   let customPurpose
 
   let lending = true
+
+  function submit() {
+    lists.addExpense($selectedListId, {
+      amount,
+      lending,
+      purpose: purpose === 'custom' ? customPurpose : purpose
+    })
+    reset()
+  }
+
+  function reset() {
+    purpose = undefined
+    customPurpose = ''
+    lending = true
+    amount = undefined
+  }
 </script>
 
 <svelte:head>
@@ -28,23 +46,25 @@
       <input
         type="number"
         id="amount"
+        inputmode="numeric"
+        pattern="[0-9]*"
         class="text-7xl w-full text-center opacity-0 peer"
-        bind:value
+        bind:value={amount}
       />
       <div
         class="absolute inset-0 text-stone-300 text-7xl pointer-events-none flex items-center justify-center peer-focus:text-stone-600 transition-colors duration-300"
       >
         <span>
-          {formattedValue}
+          {formattedAmount}
         </span>
       </div>
     </div>
   </div>
   <h3 class="text-stone-700 text-lg mb-4 font-semibold">
-    Wer schuldet wem {formattedValue}?
+    Wer schuldet wem {formattedAmount}?
   </h3>
   <div class="mb-16 flex items-center">
-    <span class="grow text-center basis-0 text-xl font-bold text-stone-300"
+    <span class="grow text-center basis-0 text-xl font-bold text-stone-700"
       >Ich</span
     >
     <div class="basis-0 grow flex justify-center">
@@ -58,7 +78,7 @@
       </button>
     </div>
 
-    <span class="grow text-center basis-0 text-xl font-bold text-stone-300"
+    <span class="grow text-center basis-0 text-xl font-bold text-stone-700"
       >{$participant}</span
     >
   </div>
@@ -103,7 +123,9 @@
   <div class="flex justify-end">
     <button
       type="button"
-      class="rounded-full border-[3px] border-stone-700 px-4 py-2 font-bold"
+      class="rounded-full border-[3px] border-stone-700 px-4 py-2 font-bold transition-opacity duration-300 {!formComplete &&
+        'opacity-30 cursor-not-allowed pointer-events-none'}"
+      on:click={submit}
     >
       Bestätigen
     </button>
