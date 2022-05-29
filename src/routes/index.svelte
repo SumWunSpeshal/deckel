@@ -1,7 +1,7 @@
 <script>
   import Input from '$lib/Input.svelte'
   import Arrow from '$lib/icons/Arrow.svelte'
-  import { participant, lists, selectedListId } from '$lib/stores/lists'
+  import { participant, lists, selectedListId, sum } from '$lib/stores/lists'
   import currency from '/src/utils/currency'
 
   let amount
@@ -19,6 +19,13 @@
       purpose: purpose === 'custom' ? customPurpose : purpose
     })
     reset()
+  }
+
+  function equalize() {
+    lists.addExpense($selectedListId, {
+      amount: $sum * -1,
+      purpose: 'Ausgleich'
+    })
   }
 
   function reset() {
@@ -116,10 +123,17 @@
     </label>
   </fieldset>
 
-  <div class="flex justify-end">
+  <div class="flex justify-between">
     <button
       type="button"
-      class="rounded-full border-[3px] border-stone-700 px-4 py-2 font-bold transition-opacity duration-300 {!formComplete &&
+      class="rounded-full border-[3px] border-orange-700 text-orange-700 px-4 py-2 font-bold transition-opacity duration-300"
+      on:click={equalize}
+    >
+      Schulden tilgen
+    </button>
+    <button
+      type="button"
+      class="rounded-full border-[3px] border-stone-500 text-stone-500 px-4 py-2 font-bold transition-opacity duration-300 {!formComplete &&
         'opacity-30 cursor-not-allowed pointer-events-none'}"
       on:click={submit}
     >

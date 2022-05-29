@@ -20,11 +20,13 @@
   </div>
 
   <div
-    class="p-3 rounded-md text-white font-semibold {$sum > 0
+    class="p-3 rounded-md text-white font-semibold {$sum === 0
       ? 'bg-green-600'
       : 'bg-rose-600'}"
   >
-    {#if $sum > 0}
+    {#if $sum === 0}
+      <div>Alles beglichen</div>
+    {:else if $sum > 0}
       <div>{$participant} schuldet Dir {currency(Math.abs($sum))}</div>
     {:else}
       <div>Du schuldest {$participant} {currency(Math.abs($sum))}</div>
@@ -36,7 +38,10 @@
   <div class="space-y-2">
     {#each $selectedListExpensesSortedByNew || [] as expense}
       <div
-        class="p-3 bg-stone-200 rounded-md flex justify-between items-center text-stone-700 gap-4"
+        class="p-3 bg-stone-200 rounded-md flex justify-between items-center text-stone-700 gap-4 {expense.purpose ===
+        'Ausgleich'
+          ? 'bg-sky-100'
+          : 'bg-stone-200'}"
       >
         <ul class="space-y-2">
           <li class="text-stone-500">{formatDate(expense.date)}</li>
