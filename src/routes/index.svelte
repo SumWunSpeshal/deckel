@@ -5,7 +5,7 @@
   import currency from '/src/utils/currency'
 
   let amount
-  $: purposeComplete = purpose || customPurpose
+  $: purposeComplete = purpose === 'custom' ? !!customPurpose : !!purpose
   $: formComplete = amount && purposeComplete
 
   let purpose
@@ -51,11 +51,13 @@
         id="amount"
         inputmode="numeric"
         pattern="[0-9]*"
-        class="text-7xl w-full text-center opacity-0 peer"
+        class="text-7xl w-full text-center opacity-0"
         bind:value={amount}
       />
       <div
-        class="absolute inset-0 text-stone-300 text-7xl pointer-events-none flex items-center justify-center peer-focus:text-stone-600 transition-colors duration-300"
+        class="absolute inset-0 text-7xl pointer-events-none flex items-center justify-center transition-colors duration-300 {amount
+          ? 'text-stone-600'
+          : 'text-stone-300'}"
       >
         <span>
           {currency(amount)}
@@ -103,7 +105,7 @@
       </label>
     {/each}
 
-    <label for="custom-purpose" class="w-full flex items-center gap-4">
+    <label for="custom-purpose" class="w-full flex items-center gap-4 mt-4">
       <input
         type="radio"
         id="custom-purpose"
@@ -126,7 +128,8 @@
   <div class="flex justify-between">
     <button
       type="button"
-      class="rounded-full border-[3px] border-orange-700 text-orange-700 px-4 py-2 font-bold transition-opacity duration-300"
+      class="rounded-full border-[3px] border-orange-700 text-orange-700 px-4 py-2 font-bold transition-opacity duration-300 {$sum ===
+        0 && 'opacity-30 cursor-not-allowed pointer-events-none'}"
       on:click={equalize}
     >
       Schulden tilgen

@@ -22,7 +22,7 @@
   <div
     class="p-3 rounded-md text-white font-semibold {$sum === 0
       ? 'bg-green-600'
-      : 'bg-rose-600'}"
+      : 'bg-orange-400'}"
   >
     {#if $sum === 0}
       <div>Alles beglichen</div>
