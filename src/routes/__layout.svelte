@@ -1,5 +1,6 @@
 <script>
   import { onMount } from 'svelte'
+  import { selectedList } from '$lib/stores/lists'
 
   import '/src/app.css'
   import Nav from '$lib/Nav.svelte'
@@ -9,10 +10,15 @@
   let firstSlide
   let reserveBottom = 0
   let navInteraction = true
+  let secondSlide
 
   onMount(() => {
     reserveBottom = nav.getBoundingClientRect().height
     determineNavInteraction()
+
+    if (!$selectedList && secondSlide) {
+      secondSlide.scrollIntoView({ behavior: 'smooth' })
+    }
   })
 
   function onScroll() {
@@ -28,7 +34,19 @@
   class="relative z-1 overflow-y-auto"
   style="max-height: calc(100% - {reserveBottom}px);"
 >
-  <slot />
+  {#if $selectedList}
+    <slot />
+  {:else}
+    <div class="pt-64">
+      <div class="container">
+        <div class="flex items-center justify-center text-center">
+          <h1 class="text-stone-300 font-bold text-2xl">
+            Erstelle Deine erste Liste!
+          </h1>
+        </div>
+      </div>
+    </div>
+  {/if}
 </main>
 <footer
   class="fixed overflow-y-auto text-center inset-0 snap-y snap-mandatory"
@@ -44,7 +62,7 @@
     </nav>
   </div>
 
-  <div class="snap-start bg-white text-left">
+  <div class="snap-start bg-white text-left" bind:this={secondSlide}>
     <Drawer />
   </div>
 </footer>
