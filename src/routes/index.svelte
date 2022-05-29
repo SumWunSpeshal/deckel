@@ -121,15 +121,17 @@
   <div class="flex justify-between">
     <button
       type="button"
-      class="rounded-full border-[3px] border-orange-700 text-orange-700 px-4 py-2 font-bold transition-opacity duration-300 {$sum ===
-        0 && 'opacity-30 cursor-not-allowed pointer-events-none'}"
+      class="rounded-full border-[3px] px-4 py-2 font-bold transition-colors duration-300 {$sum ===
+      0
+        ? 'border-stone-200 text-stone-200 cursor-not-allowed pointer-events-none'
+        : 'border-orange-700 text-orange-700'}"
       on:click={equalize}
     >
       Schulden tilgen
     </button>
     <button
       type="button"
-      class="rounded-full border-[3px] px-4 py-2 font-bold transition-opacity duration-300 {!formComplete
+      class="rounded-full border-[3px] px-4 py-2 font-bold transition-colors duration-300 {!formComplete
         ? 'border-stone-200 text-stone-200 cursor-not-allowed pointer-events-none'
         : 'border-teal-300 text-teal-300'}"
       on:click={submit}
