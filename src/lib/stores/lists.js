@@ -1,4 +1,4 @@
-import { writable } from 'svelte/store'
+import { derived, writable } from 'svelte/store'
 import { browser } from '$app/env'
 
 const DEFAULT_STORE = {}
@@ -85,6 +85,13 @@ function createListsStore() {
 }
 
 export const lists = createListsStore()
+export const selectedList = derived(lists, $lists =>
+  Object.values($lists).find(({ selected }) => selected)
+)
+export const participant = derived(
+  selectedList,
+  ({ participant }) => participant
+)
 
 if (browser) {
   lists.subscribe(value => localStorage.setItem('lists', JSON.stringify(value)))

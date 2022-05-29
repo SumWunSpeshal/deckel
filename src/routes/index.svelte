@@ -1,6 +1,7 @@
 <script>
   import Input from '$lib/Input.svelte'
   import Arrow from '$lib/icons/Arrow.svelte'
+  import { participant } from '$lib/stores/lists'
 
   let value
   $: formattedValue = (value ? value / 100 : 0).toLocaleString('de-DE', {
@@ -10,6 +11,8 @@
 
   let purpose
   let customPurpose
+
+  let lending = true
 </script>
 
 <svelte:head>
@@ -37,8 +40,30 @@
       </div>
     </div>
   </div>
-  <h3 class="text-stone-700 text-lg mb-2 font-semibold">Verwendungszweck</h3>
-  <fieldset class="flex gap-x-8 gap-y-4 flex-wrap">
+  <h3 class="text-stone-700 text-lg mb-4 font-semibold">
+    Wer schuldet wem {formattedValue}?
+  </h3>
+  <div class="mb-16 flex items-center">
+    <span class="grow text-center basis-0 text-xl font-bold text-stone-300"
+      >Ich</span
+    >
+    <div class="basis-0 grow flex justify-center">
+      <button
+        type="button"
+        class="square-14 flex justify-center items-center bg-sky-200 rounded-full border-[3px] border-sky-500 transition-transform duration-300"
+        class:-rotate-180={lending}
+        on:click={() => (lending = !lending)}
+      >
+        <Arrow color="var(--white)" size="24" />
+      </button>
+    </div>
+
+    <span class="grow text-center basis-0 text-xl font-bold text-stone-300"
+      >{$participant}</span
+    >
+  </div>
+  <h3 class="text-stone-700 text-lg mb-4 font-semibold">Verwendungszweck</h3>
+  <fieldset class="flex gap-x-8 gap-y-4 flex-wrap mb-16">
     {#each ['🛒', '🖨', '🛠', '⛽️', '🚗', '👕', '🏖', '🍿'] as shortcut}
       <label for={shortcut} class="flex gap-2 items-center cursor-pointer">
         <input
@@ -75,5 +100,12 @@
     </label>
   </fieldset>
 
-  <Arrow />
+  <div class="flex justify-end">
+    <button
+      type="button"
+      class="rounded-full border-[3px] border-stone-700 px-4 py-2 font-bold"
+    >
+      Bestätigen
+    </button>
+  </div>
 </div>
