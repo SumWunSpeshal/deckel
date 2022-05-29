@@ -10,5 +10,5 @@
     class="absolute top-0 left-0 w-full block text-sm text-stone-500"
     >{label}</label
   >
-  <input type="text" {id} bind:value class="w-full text-lg" />
+  <input type="text" {id} bind:value class="w-full text-lg bg-transparent" />
 </div>

@@ -49,7 +49,7 @@ function createListsStore() {
         delete prev[listId]
         return prev
       }),
-    addExpense: (listId, { date, amount, lending, purpose }) =>
+    addExpense: (listId, { amount, lending, purpose }) =>
       update(prev => ({
         ...prev,
         [listId]: {
@@ -57,7 +57,7 @@ function createListsStore() {
           participant: prev[listId].participant,
           expenses: [
             ...prev[listId].expenses,
-            { date, amount, lending, purpose }
+            { date: Date.now(), amount, lending, purpose }
           ]
         }
       })),
