@@ -21,10 +21,6 @@
     }
   })
 
-  function onScroll() {
-    determineNavInteraction()
-  }
-
   function determineNavInteraction() {
     navInteraction = firstSlide.getBoundingClientRect().y !== 0
   }
@@ -51,7 +47,7 @@
 <footer
   class="fixed overflow-y-auto text-center inset-0 snap-y snap-mandatory"
   class:z-2={navInteraction}
-  on:scroll={onScroll}
+  on:scroll={() => determineNavInteraction()}
 >
   <div class="flex flex-col justify-end h-full snap-end" bind:this={firstSlide}>
     <nav
