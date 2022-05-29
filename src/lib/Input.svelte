@@ -1,16 +1,14 @@
 <script>
-  import { lists } from './stores/lists'
-
   export let id
-
-  let value = ''
-
-  function submit() {
-    value = ''
-    lists.createList(value)
-  }
+  export let label
+  export let value = ''
 </script>
 
-<label for="asd">List name:</label>
-<input type="text" {id} bind:value />
-<button type="button" on:click={submit}>Save</button>
+<div class="border-b border-stone-700 relative pt-5">
+  <label
+    for={id}
+    class="absolute top-0 left-0 w-full block text-sm text-stone-500"
+    >{label}</label
+  >
+  <input type="text" {id} bind:value class="w-full text-lg" />
+</div>

@@ -16,15 +16,30 @@ function createListsStore() {
         ...prev,
         [Object.keys(prev).length + 1]: {
           listId: Object.keys(prev).length + 1,
+          selected: !Object.keys(prev).length,
           participant: name,
           expenses: []
         }
       })),
+    selectList: listId =>
+      update(prev =>
+        Object.entries(prev).reduce(
+          (acc, [currId, curr]) => ({
+            ...acc,
+            [currId]: {
+              ...curr,
+              selected: listId === currId
+            }
+          }),
+          {}
+        )
+      ),
     updateListName: (listId, participant) =>
       update(prev => ({
         ...prev,
         [listId]: {
           listId,
+          selected: prev[listId].selected,
           participant,
           expenses: [...prev[listId].expenses]
         }

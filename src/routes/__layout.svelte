@@ -1,16 +1,9 @@
 <script>
-  import { page } from '$app/stores'
   import { onMount } from 'svelte'
-  import Plus from '$lib/icons/Plus.svelte'
-  import List from '$lib/icons/List.svelte'
-  import History from '$lib/icons/History.svelte'
-  import Delete from '$lib/icons/Delete.svelte'
-  import Edit from '$lib/icons/Edit.svelte'
-  import Input from '$lib/Input.svelte'
 
   import '/src/app.css'
-  import Check from '$lib/icons/Check.svelte'
-  import Cross from '$lib/icons/Cross.svelte'
+  import Nav from '$lib/Nav.svelte'
+  import Drawer from '$lib/Drawer.svelte'
 
   let nav
   let firstSlide
@@ -36,39 +29,6 @@
   style="max-height: calc(100% - {reserveBottom}px);"
 >
   <slot />
-  <div>
-    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio, est
-    explicabo perspiciatis minima velit fugit consequuntur voluptate odit!
-    Nesciunt deleniti earum totam accusantium alias fuga provident corporis quis
-    ut ex! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio, est
-    explicabo perspiciatis minima velit fugit consequuntur voluptate odit!
-    Nesciunt deleniti earum totam accusantium alias fuga provident corporis quis
-    ut ex! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio, est
-    explicabo perspiciatis minima velit fugit consequuntur voluptate odit!
-    Nesciunt deleniti earum totam accusantium alias fuga provident corporis quis
-    ut ex! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio, est
-    explicabo perspiciatis minima velit fugit consequuntur voluptate odit!
-    Nesciunt deleniti earum totam accusantium alias fuga provident corporis quis
-    ut ex! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio, est
-    explicabo perspiciatis minima velit fugit consequuntur voluptate odit!
-    Nesciunt deleniti earum totam accusantium alias fuga provident corporis quis
-    ut ex! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio, est
-    explicabo perspiciatis minima velit fugit consequuntur voluptate odit!
-    Nesciunt deleniti earum totam accusantium alias fuga provident corporis quis
-    ut ex! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio, est
-    explicabo perspiciatis minima velit fugit consequuntur voluptate odit!
-    Nesciunt deleniti earum totam accusantium alias fuga provident corporis quis
-    ut ex! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio, est
-    explicabo perspiciatis minima velit fugit consequuntur voluptate odit!
-    Nesciunt deleniti earum totam accusantium alias fuga provident corporis quis
-    ut ex! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio, est
-    explicabo perspiciatis minima velit fugit consequuntur voluptate odit!
-    Nesciunt deleniti earum totam accusantium alias fuga provident corporis quis
-    ut ex! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio, est
-    explicabo perspiciatis minima velit fugit consequuntur voluptate odit!
-    Nesciunt deleniti earum totam accusantium alias fuga provident corporis quis
-    ut ex!
-  </div>
 </main>
 <footer
   class="fixed overflow-y-auto text-center inset-0 snap-y snap-mandatory"
@@ -77,50 +37,14 @@
 >
   <div class="flex flex-col justify-end h-full snap-end" bind:this={firstSlide}>
     <nav
-      class="flex justify-center p-4 border-y border-gray-300 bg-white pointer-events-auto"
+      class="flex justify-center border-t-2 border-stone-700 bg-white pointer-events-auto"
       bind:this={nav}
     >
-      <ul class="flex space-x-2">
-        <li class:active={$page.url.pathname === '/'}>
-          <a sveltekit:prefetch href="/">
-            <Plus />
-          </a>
-        </li>
-        <li class:active={$page.url.pathname === '/about'}>
-          <a sveltekit:prefetch href="/">
-            <List />
-          </a>
-        </li>
-        <li class:active={$page.url.pathname === '/todos'}>
-          <a sveltekit:prefetch href="/">
-            <History />
-          </a>
-        </li>
-        <li class:active={$page.url.pathname === '/todos'}>
-          <a sveltekit:prefetch href="/">
-            <Delete />
-          </a>
-        </li>
-        <li class:active={$page.url.pathname === '/todos'}>
-          <a sveltekit:prefetch href="/">
-            <Edit />
-          </a>
-        </li>
-        <li class:active={$page.url.pathname === '/todos'}>
-          <a sveltekit:prefetch href="/">
-            <Check />
-          </a>
-        </li>
-        <li class:active={$page.url.pathname === '/todos'}>
-          <a sveltekit:prefetch href="/">
-            <Cross />
-          </a>
-        </li>
-      </ul>
+      <Nav />
     </nav>
   </div>
 
-  <div class="snap-start bg-white">
-    <Input id="new-list" />
+  <div class="snap-start bg-white text-left">
+    <Drawer />
   </div>
 </footer>
