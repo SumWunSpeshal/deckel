@@ -5,6 +5,7 @@
   import List from '$lib/icons/List.svelte'
   import History from '$lib/icons/History.svelte'
   import Delete from '$lib/icons/Delete.svelte'
+  import Edit from '$lib/icons/Edit.svelte'
 
   import '/src/app.css'
 
@@ -95,6 +96,11 @@
         <li class:active={$page.url.pathname === '/todos'}>
           <a sveltekit:prefetch href="/">
             <Delete />
+          </a>
+        </li>
+        <li class:active={$page.url.pathname === '/todos'}>
+          <a sveltekit:prefetch href="/">
+            <Edit />
           </a>
         </li>
       </ul>
