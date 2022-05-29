@@ -9,7 +9,7 @@
   let nav
   let firstSlide
   let reserveBottom = 0
-  let navInteraction = true
+  let navInteraction
   let secondSlide
 
   onMount(() => {
