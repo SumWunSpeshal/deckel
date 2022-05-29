@@ -10,6 +10,7 @@
 
   import '/src/app.css'
   import Check from '$lib/icons/Check.svelte'
+  import Cross from '$lib/icons/Cross.svelte'
 
   let nav
   let firstSlide
@@ -108,6 +109,11 @@
         <li class:active={$page.url.pathname === '/todos'}>
           <a sveltekit:prefetch href="/">
             <Check />
+          </a>
+        </li>
+        <li class:active={$page.url.pathname === '/todos'}>
+          <a sveltekit:prefetch href="/">
+            <Cross />
           </a>
         </li>
       </ul>
