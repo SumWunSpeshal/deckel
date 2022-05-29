@@ -51,7 +51,8 @@
 >
   <div class="flex flex-col h-full snap-end" bind:this={firstSlide}>
     <div
-      class="grow"
+      class="grow transition-colors duration-300 {navInteraction &&
+        'bg-black/50'}"
       on:click={() => firstSlide.scrollIntoView({ behavior: 'smooth' })}
     />
     <nav
