@@ -49,14 +49,14 @@ function createListsStore() {
         delete prev[listId]
         return prev
       }),
-    addExpense: (listId, { amount, lending, purpose }) =>
+    addExpense: (listId, { amount, purpose }) =>
       update(prev => ({
         ...prev,
         [listId]: {
           ...prev[listId],
           expenses: [
-            ...prev[listId].expenses,
-            { date: Date.now(), amount, lending, purpose }
+            ...(prev[listId]?.expenses || []),
+            { date: Date.now(), amount, purpose }
           ]
         }
       })),
@@ -86,6 +86,17 @@ export const selectedList = derived(lists, $lists =>
   Object.values($lists).find(({ selected }) => selected)
 )
 export const selectedListId = derived(selectedList, list => list?.listId)
+export const selectedListExpenses = derived(
+  selectedList,
+  list => list?.expenses
+)
+export const selectedListExpensesSortedByNew = derived(
+  selectedListExpenses,
+  list => list?.sort((a, b) => b?.date - a?.date)
+)
+export const sum = derived(selectedListExpenses, expenses =>
+  expenses?.reduce((prev, { amount }) => prev + amount, 0)
+)
 export const participant = derived(selectedList, list => list?.participant)
 
 if (browser) {

@@ -2,12 +2,9 @@
   import Input from '$lib/Input.svelte'
   import Arrow from '$lib/icons/Arrow.svelte'
   import { participant, lists, selectedListId } from '$lib/stores/lists'
+  import currency from '/src/utils/currency'
 
   let amount
-  $: formattedAmount = (amount ? amount / 100 : 0).toLocaleString('de-DE', {
-    style: 'currency',
-    currency: 'EUR'
-  })
   $: purposeComplete = purpose || customPurpose
   $: formComplete = amount && purposeComplete
 
@@ -18,8 +15,7 @@
 
   function submit() {
     lists.addExpense($selectedListId, {
-      amount,
-      lending,
+      amount: lending ? amount : -amount,
       purpose: purpose === 'custom' ? customPurpose : purpose
     })
     reset()
@@ -55,13 +51,13 @@
         class="absolute inset-0 text-stone-300 text-7xl pointer-events-none flex items-center justify-center peer-focus:text-stone-600 transition-colors duration-300"
       >
         <span>
-          {formattedAmount}
+          {currency(amount)}
         </span>
       </div>
     </div>
   </div>
   <h3 class="text-stone-700 text-lg mb-4 font-semibold">
-    Wer schuldet wem {formattedAmount}?
+    Wer schuldet wem {currency(amount)}?
   </h3>
   <div class="mb-16 flex items-center">
     <span class="grow text-center basis-0 text-xl font-bold text-stone-700"
@@ -84,7 +80,7 @@
   </div>
   <h3 class="text-stone-700 text-lg mb-4 font-semibold">Verwendungszweck</h3>
   <fieldset class="flex gap-x-8 gap-y-4 flex-wrap mb-16">
-    {#each ['🛒', '🖨', '🛠', '⛽️', '🚗', '👕', '🏖', '🍿'] as shortcut}
+    {#each ['🛒', '🖨', '🛠', '⛽️', '🚗', '👕', '🏖', '🍿', '🍽️'] as shortcut}
       <label for={shortcut} class="flex gap-2 items-center cursor-pointer">
         <input
           type="radio"
