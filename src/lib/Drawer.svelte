@@ -14,7 +14,7 @@
 
 <div class="container py-6">
   <div class="mb-4">
-    <h2 class="text-3xl font-semibold text-stone-700">Deine Listen</h2>
+    <h2 class="text-3xl font-semibold text-stone-700">Meine Listen</h2>
   </div>
   <div class="flex gap-4 mb-8">
     <div class="grow">
