@@ -91,7 +91,7 @@
     {#each shortcuts as shortcut}
       <button
         type="button"
-        class="square-10 flex items-center justify-center"
+        class="square-8 flex items-center justify-center"
         on:click={() => (purpose += shortcut)}
       >
         <span>
