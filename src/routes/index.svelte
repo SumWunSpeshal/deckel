@@ -120,7 +120,7 @@
       type="button"
       class="rounded-full border-[3px] px-4 py-2 font-bold transition-colors duration-300 {!formComplete
         ? 'border-stone-200 text-stone-200 cursor-not-allowed pointer-events-none'
-        : 'border-teal-300 text-teal-300'}"
+        : 'border-teal-400 text-teal-400'}"
       on:click={submit}
     >
       Bestätigen
