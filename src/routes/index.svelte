@@ -3,20 +3,18 @@
   import { participant, lists, selectedListId, sum } from '$lib/stores/lists'
   import currency from '/src/utils/currency'
 
-  let amount
-  $: purposeComplete = purpose === 'custom' ? !!customPurpose : !!purpose
-  $: formComplete = amount && purposeComplete
-
-  let purpose
-  let customPurpose
   const shortcuts = ['🛒', '🖨', '🛠', '⛽️', '🚗', '👕', '🏖', '🍿', '🍽️']
+
+  let amount
+  let purpose = ''
+  $: formComplete = amount && purpose
 
   let lending = true
 
   function submit() {
     lists.addExpense($selectedListId, {
       amount: lending ? amount : -amount,
-      purpose: purpose === 'custom' ? customPurpose : purpose
+      purpose
     })
     reset()
   }
@@ -29,8 +27,7 @@
   }
 
   function reset() {
-    purpose = undefined
-    customPurpose = ''
+    purpose = ''
     lending = true
     amount = undefined
   }
@@ -88,14 +85,15 @@
       {$participant}
     </button>
   </div>
-  <h3 class="text-stone-700 text-lg mb-4 font-semibold">Verwendungszweck</h3>
+  <h3 class="text-stone-700 text-lg mb-4 font-semibold">
+    Wofür wurde das Geld ausgelegt?
+  </h3>
   <fieldset class="flex gap-x-1 gap-y-4 flex-wrap mb-10">
     {#each shortcuts as shortcut}
       <button
         type="button"
-        class="square-8 border-2 border-transparent flex items-center justify-center rounded-md"
-        class:border-teal-200={purpose === shortcut}
-        on:click={() => (purpose = shortcut)}
+        class="square-10 flex items-center justify-center"
+        on:click={() => (purpose += shortcut)}
       >
         <span>
           {shortcut}
@@ -104,16 +102,7 @@
     {/each}
 
     <div class="w-full">
-      <Input
-        id="custom-purpose-input"
-        label="Sonstiges"
-        bind:value={purpose}
-        onFocus={() => {
-          if (shortcuts.includes(purpose)) {
-            purpose = null
-          }
-        }}
-      />
+      <Input id="purpose" label="Verwendungszweck" bind:value={purpose} />
     </div>
   </fieldset>
 
