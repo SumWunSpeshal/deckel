@@ -7,9 +7,8 @@
 
   let amount
   let purpose = ''
-  $: formComplete = amount && purpose
-
   let lending = true
+  $: formComplete = amount && purpose
 
   function submit() {
     lists.addExpense($selectedListId, {
