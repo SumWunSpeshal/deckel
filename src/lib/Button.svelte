@@ -9,7 +9,7 @@
 <button
   type="button"
   class="relative rounded-full border-[3px] px-4 py-2 font-bold overflow-hidden transition-opacity duration-300 {onLongpress
-    ? 'before:absolute before:inset-0 before:right-full before:-z-1 before:active:right-0 before:active:transition-all before:active:duration-1000 before:active:ease-linear before:transition-none'
+    ? 'before:absolute before:inset-0 before:right-full before:-z-1 before:active:right-0 before:active:transition-all before:active:duration-1000 before:active:ease-linear before:transition-none select-none'
     : ''} {{
     'primary-ghost': `border-teal-400 text-teal-400 ${
       onLongpress ? 'before:bg-teal-200' : ''
@@ -23,7 +23,7 @@
     ? 'cursor-not-allowed pointer-events-none opacity-20'
     : ''}"
   on:click
-  use:longpress={longpressDuration}
+  use:longpress={{ longpressDuration, hasLongpress: !!onLongpress }}
   on:longpress={onLongpress}
 >
   <slot />

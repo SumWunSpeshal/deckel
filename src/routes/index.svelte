@@ -48,7 +48,7 @@
       Neue Ausgabe mit {$participant}
     </h1>
   </div>
-  <div class="flex justify-center mb-16">
+  <div class="flex justify-center mb-10">
     <div class="relative text-center">
       <input
         type="number"
@@ -95,22 +95,22 @@
   <h3 class="text-stone-700 text-lg mb-4 font-semibold">
     Wofür wurde das Geld ausgelegt?
   </h3>
-  <fieldset class="flex gap-x-1 gap-y-4 flex-wrap mb-10">
-    {#each shortcuts as shortcut}
-      <button
-        type="button"
-        class="square-11 flex items-center justify-center"
-        on:click={() => (purpose += shortcut)}
-      >
-        <span>
-          {shortcut}
-        </span>
-      </button>
-    {/each}
-
-    <div class="w-full">
-      <Input id="purpose" label="Verwendungszweck" bind:value={purpose} />
+  <fieldset class="mb-10">
+    <div class="flex flex-wrap mb-4">
+      {#each shortcuts as shortcut}
+        <button
+          type="button"
+          class="square-11 flex items-center justify-center"
+          on:click={() => (purpose += shortcut)}
+        >
+          <span>
+            {shortcut}
+          </span>
+        </button>
+      {/each}
     </div>
+
+    <Input id="purpose" label="Verwendungszweck" bind:value={purpose} />
   </fieldset>
 
   <div class="flex justify-between">
