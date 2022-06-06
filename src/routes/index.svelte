@@ -1,9 +1,11 @@
 <script>
   import Input from '$lib/Input.svelte'
+  import Button from '$lib/Button.svelte'
   import { participant, lists, selectedListId, sum } from '$lib/stores/lists'
+  import { triggerSnackbar } from '$lib/Snackbar.svelte'
   import currency from '/src/utils/currency'
 
-  const shortcuts = ['🛒', '🖨', '🛠', '⛽️', '🚗', '👕', '🏖', '🍿', '🍽️']
+  const shortcuts = ['🛒', '🖨', '🛠', '⛽️', '🚗', '👕', '🏖', '🍿', '🍽️', '🚬']
 
   let amount
   let purpose = ''
@@ -15,7 +17,9 @@
       amount: lending ? amount : -amount,
       purpose
     })
+
     reset()
+    triggerSnackbar({ text: 'Die neue Ausgabe wurde erfolgreich hinzugefügt!' })
   }
 
   function equalize() {
@@ -23,6 +27,8 @@
       amount: $sum * -1,
       purpose: 'Ausgleich'
     })
+
+    triggerSnackbar({ text: 'Die Schulden wurden erfolgreich ausgeglichen!' })
   }
 
   function reset() {
@@ -38,7 +44,9 @@
 
 <div class="container py-4">
   <div class="mb-16">
-    <h1 class="text-4xl font-bold text-stone-700">Neue Ausgabe</h1>
+    <h1 class="text-4xl font-bold text-stone-700">
+      Neue Ausgabe mit {$participant}
+    </h1>
   </div>
   <div class="flex justify-center mb-16">
     <div class="relative text-center">
@@ -68,7 +76,7 @@
     <button
       type="button"
       class="grow text-center basis-0 text-xl font-bold text-white rounded-full py-2 transition-colors duration-300 {lending
-        ? 'bg-teal-200'
+        ? 'bg-teal-400'
         : 'bg-stone-200'}"
       on:click={() => (lending = true)}
     >
@@ -77,7 +85,7 @@
     <button
       type="button"
       class="grow text-center basis-0 text-xl font-bold text-white rounded-full py-2 transition-colors duration-300 {!lending
-        ? 'bg-teal-200'
+        ? 'bg-teal-400'
         : 'bg-stone-200'}"
       on:click={() => (lending = false)}
     >
@@ -91,7 +99,7 @@
     {#each shortcuts as shortcut}
       <button
         type="button"
-        class="square-8 flex items-center justify-center"
+        class="square-11 flex items-center justify-center"
         on:click={() => (purpose += shortcut)}
       >
         <span>
@@ -106,24 +114,13 @@
   </fieldset>
 
   <div class="flex justify-between">
-    <button
-      type="button"
-      class="rounded-full border-[3px] px-4 py-2 font-bold transition-colors duration-300 {$sum ===
-      0
-        ? 'border-stone-200 text-stone-200 cursor-not-allowed pointer-events-none'
-        : 'border-orange-700 text-orange-700'}"
-      on:click={equalize}
+    <Button
+      onLongpress={equalize}
+      disabled={$sum === 0}
+      variant="secondary-ghost"
     >
       Schulden tilgen
-    </button>
-    <button
-      type="button"
-      class="rounded-full border-[3px] px-4 py-2 font-bold transition-colors duration-300 {!formComplete
-        ? 'border-stone-200 text-stone-200 cursor-not-allowed pointer-events-none'
-        : 'border-teal-400 text-teal-400'}"
-      on:click={submit}
-    >
-      Bestätigen
-    </button>
+    </Button>
+    <Button on:click={submit} disabled={!formComplete}>Bestätigen</Button>
   </div>
 </div>

@@ -5,6 +5,7 @@
   import '/src/app.css'
   import Nav from '$lib/Nav.svelte'
   import Drawer from '$lib/Drawer.svelte'
+  import Snackbar from '$lib/Snackbar.svelte'
 
   let nav
   let firstSlide
@@ -26,6 +27,7 @@
   }
 </script>
 
+<Snackbar />
 <main
   class="relative z-1 overflow-y-auto"
   style="max-height: calc(100% - {reserveBottom}px);"

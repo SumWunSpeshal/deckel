@@ -8,6 +8,8 @@
   } from '$lib/stores/lists'
   import currency from '/src/utils/currency'
   import formatDate from '/src/utils/formatDate'
+  import Button from '$lib/Button.svelte'
+  import { triggerSnackbar } from '$lib/Snackbar.svelte'
 </script>
 
 <svelte:head>
@@ -58,13 +60,17 @@
     </div>
 
     <div class="flex justify-end mt-6">
-      <button
-        type="button"
-        class="rounded-full border-[3px] px-4 py-2 font-bold transition-colors duration-300 border-orange-700 text-orange-700"
-        on:click={() => lists.clearExpenses($selectedListId)}
+      <Button
+        variant="secondary-ghost"
+        onLongpress={() => {
+          lists.clearExpenses($selectedListId)
+          triggerSnackbar({
+            text: 'Alle Einträge wurden gelöscht!'
+          })
+        }}
       >
         Verlauf löschen
-      </button>
+      </Button>
     </div>
   {/if}
 </div>
