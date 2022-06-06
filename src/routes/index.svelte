@@ -43,7 +43,7 @@
 </svelte:head>
 
 <div class="container py-4">
-  <div class="mb-16">
+  <div class="mb-10">
     <h1 class="text-4xl font-bold text-stone-700">
       Neue Ausgabe mit {$participant}
     </h1>
