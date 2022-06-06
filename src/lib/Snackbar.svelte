@@ -3,12 +3,14 @@
 
   let content = writable('')
   let open = writable(false)
+  let timeout = null
 
   export function triggerSnackbar({ text, duration = 3000 }) {
     content.set(text)
     open.set(true)
 
-    setTimeout(() => {
+    clearTimeout(timeout)
+    timeout = setTimeout(() => {
       open.set(false)
     }, duration)
   }
