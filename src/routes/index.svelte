@@ -5,7 +5,20 @@
   import { triggerSnackbar } from '$lib/Snackbar.svelte'
   import currency from '/src/utils/currency'
 
-  const shortcuts = ['🛒', '🖨', '🛠', '⛽️', '🚗', '👕', '🏖', '🍿', '🍽️', '🚬']
+  const shortcuts = [
+    '🛒',
+    '🖨',
+    '🛠',
+    '⛽️',
+    '🚗',
+    '👕',
+    '🏖',
+    '🍿',
+    '🍽️',
+    '🚬',
+    '🚌',
+    '🚋'
+  ]
 
   let amount
   let purpose = ''
