@@ -37,7 +37,7 @@
   {:else}
     <div class="pt-64">
       <div class="container">
-        <div class="flex items-center justify-center text-center">
+        <div class="flex items-center justify-center text-center ">
           <h1 class="text-stone-300 font-bold text-2xl">
             Erstelle Deine erste Liste!
           </h1>
@@ -47,7 +47,7 @@
   {/if}
 </main>
 <footer
-  class="fixed overflow-y-auto text-center inset-0 snap-y snap-mandatory"
+  class="fixed overflow-y-auto text-center inset-0 snap-y snap-mandatory overscroll-contain"
   class:z-2={navInteraction}
   on:scroll={() => determineNavInteraction()}
 >
